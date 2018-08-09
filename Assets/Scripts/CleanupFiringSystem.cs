@@ -3,6 +3,9 @@ using Unity.Jobs;
 using Unity.Entities;
 using UnityEngine;
 
+public class CleanupFiringBarrier : BarrierSystem { }
+ 
+
 public class CleanupFiringSystem : JobComponentSystem {
 
     private struct CleanupFiringJob : IJobParallelFor
@@ -39,9 +42,4 @@ public class CleanupFiringSystem : JobComponentSystem {
             Firings = _data.Firings
         }.Schedule(_data.Length, 64, inputDeps);
     }
-}
-
-public class CleanupFiringBarrier : BarrierSystem
-{
-    
 }
